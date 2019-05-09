@@ -17,12 +17,15 @@ body{
 
 .container nav{
   width: 10%;
+  background-color: teal;
 }
 .container section{
   width: 70%;
 }
 .container aside{
   width: 20%;
+  background-color: teal;
+  align-items: center;
 }
 
 .header{
