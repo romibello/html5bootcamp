@@ -1,3 +1,7 @@
+*{
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+}
 body{
   background-color: #FFF8DC;
   padding-right: 1%;
