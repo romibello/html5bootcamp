@@ -2,6 +2,10 @@
   font-family: "Times New Roman", Times, serif;
   font-size: 14px;
 }
+* #specificity{
+  font-size: 14px;
+}
+
 body{
   background-color: #FFF8DC;
   padding-right: 1%;
@@ -65,4 +69,11 @@ body{
 .sidebar{
   font-size: 12px;
   background-color: magenta;
+}
+
+.oh-no-inline-styles{
+  background: red;
+}
+section .oh-no-inline-styles{
+  background: green;
 }
