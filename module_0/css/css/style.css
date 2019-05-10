@@ -18,12 +18,6 @@ body{
   align-items: center;
 }
 
-.item-container{
-  justify-content: center;
-  align-content: space-between;
-  background-color: blue;
-}
-
 .container nav{
   width: 10%;
   background-color: blue;
@@ -54,9 +48,6 @@ body{
   border-bottom: 10px solid #357ae8;
   color: white;
   text-align: center;
-  padding: 11px;
-  height: 68px;
-  margin: 0 auto;
   font-size: 10px;
 }
 .content{
@@ -76,4 +67,35 @@ body{
 }
 section .oh-no-inline-styles{
   background: green;
+}
+
+.box-container .footer{
+  background-color: #2f2e2e;
+  font-size: 46px;
+  padding: 11px;
+  height: 68px;
+  width: 100%;
+  margin: 0 auto;
+  grid-row: 3/3;
+}
+.box-container .header{
+  background-color: #2f2e2e;
+  font-size: 46px;
+  grid-column: 1;
+  padding: 11px;
+  width: 100%;
+  height: 68px;
+  margin: 0 auto;
+}
+.box-container .container{
+  background-color: #20B2AA;
+  font-size: 46px;
+}
+.box-container .container .item-container{
+  background-color: #20B2AA;
+  font-size: 46px;
+}
+
+.box-container{
+  display: grid;
 }
