@@ -1,65 +1,31 @@
-*{
+#specificity *{
   font-family: "Times New Roman", Times, serif;
   font-size: 14px;
 }
-* #specificity{
-  font-size: 14px;
-}
+
 
 body{
   background-color: #FFF8DC;
   padding-right: 1%;
   padding-left: 1%;
 }
-.container{
-  display: flex;
-  flex-flow: row;
-  background-color: magenta;
-  align-items: center;
+
+aside img {
+  border-style: none;
+  max-width: 80%;
+  height: auto;
+  border-radius: 8%;
 }
 
-.container nav{
-  width: 10%;
-  background-color: blue;
-}
-.container section{
-  width: 70%;
-  background-color: blue;
-}
-.container aside{
-  width: 20%;
-  background-color: blue;
-  align-items: center;
-}
-
-.header{
-  clear: both;
-  background-color: magenta;
-  color: white;
-  text-align: center;
-  padding: 11px;
-  height: 68px;
-  margin: 0 auto;
-  font-size: 46px;
-}
-.footer{
-  clear: both;
-  background-color: magenta;
-  border-bottom: 10px solid #357ae8;
-  color: white;
-  text-align: center;
-  font-size: 10px;
-}
+/* ================================== Classes ======================================== */
 .content{
   font-size: 14px;
 }
 .navigation{
   font-size: 10px;
-  background-color: blue;
 }
 .sidebar{
   font-size: 12px;
-  background-color: magenta;
 }
 
 .oh-no-inline-styles{
@@ -69,33 +35,73 @@ section .oh-no-inline-styles{
   background: green;
 }
 
-.box-container .footer{
+/* ================================== Classes ======================================== */
+/* ================================== Search ======================================== */
+
+[class$="r"]{/*select all the classes that end with r */
+  background-color: magenta;
+}
+
+:not([class$="r"])[class*="a"]{/*select all the classes that they have a and do not end with r */
+  background-color: blue;
+}
+
+/* ================================== Search ======================================== */
+/* ================================== Header and Footer ======================================== */
+.header, .footer{
+  clear: both;
+  
   background-color: #2f2e2e;
-  font-size: 46px;
-  padding: 11px;
-  height: 68px;
-  width: 100%;
-  margin: 0 auto;
-  grid-row: 3/3;
-}
-.box-container .header{
-  background-color: #2f2e2e;
-  font-size: 46px;
-  grid-column: 1;
-  padding: 11px;
-  width: 100%;
-  height: 68px;
-  margin: 0 auto;
-}
-.box-container .container{
-  background-color: #20B2AA;
-  font-size: 46px;
-}
-.box-container .container .item-container{
-  background-color: #20B2AA;
+  color: white;
+  text-align: center;
   font-size: 46px;
 }
 
-.box-container{
-  display: grid;
+.header{
+  display: block;
+  padding: 11px;
+  height: 68px;
+  margin: 0 auto;
 }
+.footer{
+  display: block;
+  width: auto;
+  border-bottom: 10px solid #357ae8;
+  padding: 11px;
+  height: 68px;
+  margin: 0 auto;
+}
+
+/* ================================== Header and Footer ======================================== */
+/* ================================== Box ======================================== */
+.box-container{
+  display: inline-flex;
+  background: #DEB887;
+}
+
+.item-box-left{
+  float: left;
+  padding: 5%;
+  width: 20%;
+  display: inline-block;
+}
+
+.item-box-center{
+  float: left;
+  padding: 5%;
+  width: 60%;
+  display: inline-block;
+}
+
+.item-box-right{
+  float: right;
+  padding: 5%;
+  width: 30%;
+  display: inline;
+}
+
+.box-container .navigation, .box-container .sidebar, .box-container .oh-no-inline-styles, .box-container .item-box-center{
+  background: #DEB887;
+}
+
+/* ================================== Box ======================================== */

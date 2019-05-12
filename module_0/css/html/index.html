@@ -6,44 +6,43 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <title>Basic page structure</title>
   </head>
-  <body>
-      <div class="box-container">
-        <header class="header" id="specificity">
-          Basic page structure
-        </header>
-      <div class="container">
-        <nav class="item-container navigation" id="specificity">
-          <ul>
-            <li>item1</li>
-            <li>item2</li>
-            <li>item3</li>
-            <li>item1</li>
-            <li>item2</li>
-            <li>item3</li>
-            <li>item1</li>
-            <li>item2</li>
-            <li>item3</li>
-            <li>item1</li>
-            <li>item2</li>
-            <li>item3</li>
-          </ul>
-        </nav>
-        <section class="item-container">
-          <header>
-            <h1>titulo 1</h1>
-            <h3>titulo 3</h3>
+  <body  id="specificity">
+          <header class="header">
+            Basic page structure
           </header>
-          <article class="oh-no-inline-styles">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </article>
-          <footer>this is the div-center footer</footer>
-        </section class="content">
-        <aside class="item-container sidebar" id="specificity">
-          <img src="../img/travel.jpg" alt="travel advertising">
-          <img src="../img/rest.jpg" alt="restaurant advertising">
-        </aside>
-      </div>
-      <footer class="footer" id="specificit">this is the page footer</footer>
-      </div>
+      <div class="box-container">
+        <div class="item-box-left">
+          <nav class="navigation">
+            <ul>
+              <li><a href="index.html">Index</a></li>
+              <li><a href="moc-up.html">Moc-up.html</a></li>
+              <li>item3</li>
+              <li>item1</li>
+              <li>item2</li>
+              <li>item3</li>
+            </ul>
+          </nav>
+        </div>
+        <div class="item-box-center">
+          <section class="content">
+           <header>
+             <h1>titulo 1</h1>
+             <h3>titulo 3</h3>
+           </header>
+           <article class="oh-no-inline-styles">
+           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>              </article>
+           <footer>this is the div-center footer</footer>
+           </section>
+        </div>
+        <div class="item-box-right">
+          <aside class="sidebar">
+            <div><img src="../img/travel.jpg" alt="travel advertising"></div>
+            <div><img src="../img/rest.jpg" alt="restaurant advertising"></div>
+            </aside>
+        </div>
+      </div>  
+      
+      <footer class="footer">this is the page footer</footer>
+      
   </body>
 </html>
