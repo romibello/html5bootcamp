@@ -1,0 +1,107 @@
+#specificity *{
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+}
+
+
+body{
+  background-color: #FFF8DC;
+  padding-right: 1%;
+  padding-left: 1%;
+}
+
+aside img {
+  border-style: none;
+  max-width: 80%;
+  height: auto;
+  border-radius: 8%;
+}
+
+/* ================================== Classes ======================================== */
+.content{
+  font-size: 14px;
+}
+.navigation{
+  font-size: 10px;
+}
+.sidebar{
+  font-size: 12px;
+}
+
+.oh-no-inline-styles{
+  background: red;
+}
+section .oh-no-inline-styles{
+  background: green;
+}
+
+/* ================================== Classes ======================================== */
+/* ================================== Search ======================================== */
+
+[class$="r"]{/*select all the classes that end with r */
+  background-color: magenta;
+}
+
+:not([class$="r"])[class*="a"]{/*select all the classes that they have a and do not end with r */
+  background-color: blue;
+}
+
+/* ================================== Search ======================================== */
+/* ================================== Header and Footer ======================================== */
+.header, .footer{
+  clear: both;
+  
+  background-color: #2f2e2e;
+  color: white;
+  text-align: center;
+  font-size: 46px;
+}
+
+.header{
+  display: block;
+  padding: 11px;
+  height: 68px;
+  margin: 0 auto;
+}
+.footer{
+  display: block;
+  width: auto;
+  border-bottom: 10px solid #357ae8;
+  padding: 11px;
+  height: 68px;
+  margin: 0 auto;
+}
+
+/* ================================== Header and Footer ======================================== */
+/* ================================== Box ======================================== */
+.box-container{
+  display: inline-flex;
+  background: #DEB887;
+}
+
+.item-box-left{
+  float: left;
+  padding: 5%;
+  width: 20%;
+  display: inline-block;
+}
+
+.item-box-center{
+  float: left;
+  padding: 5%;
+  width: 60%;
+  display: inline-block;
+}
+
+.item-box-right{
+  float: right;
+  padding: 5%;
+  width: 30%;
+  display: inline;
+}
+
+.box-container .navigation, .box-container .sidebar, .box-container .oh-no-inline-styles, .box-container .item-box-center{
+  background: #DEB887;
+}
+
+/* ================================== Box ======================================== */
