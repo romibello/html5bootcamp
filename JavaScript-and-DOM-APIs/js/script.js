@@ -1,4 +1,5 @@
 window.addEventListener("load",showHiddenSection);
+window.addEventListener("click",showAlert);
 
 function showHiddenSection() {
     // switch screens
@@ -6,3 +7,6 @@ function showHiddenSection() {
     Change.className = "showme";
 }
 
+function showAlert(){
+    alert("stop");
+}
