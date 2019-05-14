@@ -1,0 +1,48 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+header, footer, nav, .container{
+    display: block;
+}
+
+ul li{
+    display: inline;
+}
+
+header, footer{
+    padding: 11px;
+    height: 68px;
+    margin: 0 auto;
+    background: rgb(61, 105, 124);
+    color: white;
+    width: auto;
+}
+
+nav{
+    background: rgb(78, 161, 166);
+}
+
+.container{
+    background: rgba(208,241,225,1);   
+}
+
+section{
+    text-align: center;
+}
+
+.hidden{
+    visibility: hidden;
+    opacity: 0;
+}
+
+.showme{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 5s linear;
+}
+
+/*h1{
+    cursor: pointer;
+}*/
