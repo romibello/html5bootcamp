@@ -18,6 +18,14 @@ let request
 let btn2 = document.getElementById('send');
 btn2.addEventListener("click",getResponseFromApiWithParameters);
 
+let expenses = [
+    ["classic kitchen roll", "$66", "14/05/2019"],
+    ["beer can", "$45", "27/05/2019"],
+    ["vegetables", "$90", "27/05/2019"],
+    ["rice", "$45", "27/05/2019"]
+];
+
+createTable(expenses);
 
 
 // ************************************************* call functions **************************************************
@@ -34,7 +42,6 @@ function showAlert(){ //alert requested in Ej 2.2
 }
 
 function getResponseParam(){// reusable function
-    console.log("respons");
     fetch( request )
     .then(function(r){
         if(!r.ok){
@@ -81,7 +88,7 @@ function getResponseFromApiWithParameters(){// if the input text "search" is mod
         configWithParam.text = '?q='+ document.getElementById('search').value;
         request = new Request( configWithParam.url+configWithParam.text );
         let conteinerList = document.getElementById("contentList");
-        if (conteinerList.childElementCount >1){
+        if (conteinerList.childElementCount >1){//clears previous results.
             conteinerList.lastChild.remove();
         }
         getResponseParam();
@@ -97,6 +104,24 @@ function createLists(data){//create and add the list
       lista.appendChild(element);
     });
     return lista
+}
+
+//
+function createTable(matrix) {
+ let tableSection = document.querySelector(".table-container");
+ let table = document.createElement("table");
+ tableSection.appendChild(table);
+ matrix.forEach((item) => {
+   let tr = document.createElement("tr");
+   table.appendChild(tr);
+   item.forEach(element => {
+     let td = document.createElement("td");
+     let tdText = document.createTextNode(element);
+     td.appendChild(tdText);
+     tr.appendChild(td);
+   });
+ });
+ table.classList.add("table");
 }
 
 
