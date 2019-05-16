@@ -24,7 +24,7 @@ nav{
     background: rgb(78, 161, 166);
 }
 
-.container{
+#container{
     background: rgba(208,241,225,1);   
 }
 
@@ -41,6 +41,10 @@ section{
     visibility: visible;
     opacity: 1;
     transition: opacity 5s linear;
+}
+
+.WarningShowme{
+    color: red;
 }
 
 /*h1{
