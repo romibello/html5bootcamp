@@ -6,7 +6,7 @@
         <title>Topic_1</title>
     </head>
     <body>
-        <header>
+        <header class="header">
             <h1>Welcome to this page</h1>
         </header>
         <nav>
@@ -17,16 +17,23 @@
         </nav>
         <div id="container">
             <section>
+                <header>
+                    <h2>This is a section title</h2>
+                </header>
                 <article>
+                    <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem, assumenda!</h5>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio soluta, cumque dolor deleniti ipsa praesentium numquam vitae nulla magni commodi ab eius exercitationem labore suscipit veritatis eum sunt reiciendis excepturi.</p>
                 </article>
-                <article>
-                    <p></p>
-                </article>
             </section>
-            <section class="hidden" id="result"> <p>Hello World</p> </section>
-            <button id="event"> Click Me </button>
-            <aside></aside>
+            <section class="hidden">
+                <p id="result">Hello World</p>
+                <button id="event"> Click Me and enjoy a few jokes</button>
+            </section>
+            
+            <aside id="contentList">
+                <input id="search" type="text" value="JavaScript">
+                <button id="send"> Send </button>
+            </aside>
         </div>
         <footer>Footer</footer>
         <script src="../js/script.js"></script>
