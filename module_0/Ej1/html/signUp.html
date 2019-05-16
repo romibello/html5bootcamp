@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-sacle=1.0"/>
+    <title>Form</title>
+  </head>
+  <body>
+    <nav class="nav-bar">
+      <a href="index.html">inicio</a>
+      <a href="expenses.html">Expenses</a>
+      <a href="multimedia.html">Multimedia</a>
+      <a href="signUp.html">Sign Up</a>
+    </nav>
+    <form>
+        <div>
+           <label >First Name<input type="text"  placeholder="First Name" pattern="^@?(\w){1,15}$" title="invalid First name" required></label>
+        </div>
+        <div>
+          <label >Last Name<input type="text"  placeholder="Last Name" pattern="^@?(\w){1,15}$" title="invalid Last name" required></label>
+        </div>
+        <div>
+          <label >Email<input type="email"  placeholder="usuario@servicio.com"></label>
+        </div>
+        <div >
+          <label >Birthday<input type="date" ></label>
+        </div>
+        <div >
+          <label>Sport
+          <select >
+            <option>Basketball</option>
+            <option>Swim</option>
+            <option>Cycling</option>
+            <option>Boxing</option>
+            <option>Gymnastics</option>
+            <option>Archery</option>
+            <option>Tennis</option>
+            <option>Football</option>
+          </select>
+        </label>
+        </div>
+        <div>
+          <textarea name="message" rows="10" cols="30">writte your bio here</textarea>
+        </div>
+        <button type="submit"  value="Submit">Submit</button>
+        <button type="reset"  value="reset">Reset</button>
+      </form>
+  </body>
+</html>
