@@ -1,27 +1,5 @@
 /***********************************************************classes*****************************************************************/ 
-class Movie{
-    constructor(name,year,duration){
-        this.title=name;
-        this.year=year;
-        this.duration=duration;
 
-    }
-
-    play(){
-        console.log("playing: " + this.title + " movie");
-        
-    }
-
-    pause(){
-        console.log(this.title + " is paused");
-        
-    }
-
-    resumed(){
-        console.log("you can resume " + this.title + " movie");
-        
-    }
-}
 
 class Actor{
     constructor(name,age){
@@ -40,7 +18,9 @@ class EventEmitter{
         if(!this.events[eventName]){
             this.events[eventName]=[];
         }
-        this.events[eventName].push(callBack);
+        this.events[eventName].push(callBack(this.title));
+        console.log("this.events[eventName], en on, luego del push");
+        console.log(this.events[eventName]);
 
     }
 
@@ -55,24 +35,72 @@ class EventEmitter{
 
     emit(eventName){
         let Arr = this.events[eventName];
+        console.log("emit");
+        console.log(this.events[eventName]);
         if(Arr){
             Arr.forEach(callBack => {
-                callBack();
+                if(typeof callBack === "function"){
+                    callBack();
+                }else if(typeof callBack === "Object"){
+                    callBack.log(eventName);
+                }
             });
         }
         
     }
 }
 
+class Movie extends EventEmitter{
+    constructor(name,year,duration){
+        super();
+        this.title=name;
+        this.year=year;
+        this.duration=duration;
 
+    }
+
+    play(){
+        this.emit("play");
+        this.on("play",playMovie);
+    }
+
+    pause(){
+        this.emit("pause");
+        this.on("pause",pauseMovie);        
+    }
+
+    resumed(){
+        this.emit("resume");
+        this.on("resume",resumedMovie);  
+    }
+}
 
 /***********************************************************classes*****************************************************************/ 
-/***********************************************************classes*****************************************************************/ 
+/***********************************************************functions*****************************************************************/ 
+
+function playMovie(title){
+    return "playing: " + title + " movie";
+}
+
+function pauseMovie(title){
+   return title + " is paused";    
+}
+
+function resumedMovie(title){
+    return "you can resume " + title + " movie";
+}
+
+
+
+/***********************************************************functions*****************************************************************/ 
+/*********************************************************** test *****************************************************************/ 
 
 let theNotebook= new Movie("the notebook",2004,2);
 theNotebook.play();
 theNotebook.pause();
-theNotebook.resumed();
+theNotebook.off("pause",pauseMovie);
+theNotebook.pause();
+/*theNotebook.resumed();
 let goneGirl= new Movie("gone girl",2014,2,29);
 goneGirl.play();
 goneGirl.pause();
@@ -83,4 +111,4 @@ zombieland.pause();
 zombieland.resumed();
 
 
-/***********************************************************classes*****************************************************************/ 
+/*********************************************************** test *****************************************************************/ 
