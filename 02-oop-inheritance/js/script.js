@@ -18,9 +18,7 @@ class EventEmitter{
         if(!this.events[eventName]){
             this.events[eventName]=[];
         }
-        this.events[eventName].push(callBack(this.title));
-        console.log("this.events[eventName], en on, luego del push");
-        console.log(this.events[eventName]);
+        this.events[eventName].push(callBack);
 
     }
 
@@ -34,17 +32,16 @@ class EventEmitter{
     }
 
     emit(eventName){
-        let Arr = this.events[eventName];
-        console.log("emit");
-        console.log(this.events[eventName]);
+        const Arr = this.events[eventName];
         if(Arr){
-            Arr.forEach(callBack => {
-                if(typeof callBack === "function"){
-                    callBack();
-                }else if(typeof callBack === "Object"){
+            Arr.forEach((callBack) => {
+                if(typeof callBack === "Object"){
                     callBack.log(eventName);
                 }
-            });
+                else if(typeof callBack === "function"){
+                    callBack();
+                }
+            })
         }
         
     }
@@ -56,38 +53,61 @@ class Movie extends EventEmitter{
         this.title=name;
         this.year=year;
         this.duration=duration;
+        this.cast = [];
 
     }
 
     play(){
-        this.emit("play");
         this.on("play",playMovie);
+        this.emit("play");
+        
     }
 
     pause(){
+        this.on("pause",pauseMovie);
         this.emit("pause");
-        this.on("pause",pauseMovie);        
+                
     }
 
     resumed(){
+        this.on("resume",resumedMovie);
         this.emit("resume");
-        this.on("resume",resumedMovie);  
+          
     }
+
+    addCast(character){//add one or more actors to the cast 
+        this.cast = this.cast.concat(character);
+    }
+
+    showCast(){
+        this.cast.forEach((item)=>console.log(item));
+    }
+}
+
+class Logger{
+    constructor(){
+
+    }
+
+    log(info){
+        console.log("the " + info + " event has been emitted");
+    }
+
 }
 
 /***********************************************************classes*****************************************************************/ 
 /***********************************************************functions*****************************************************************/ 
 
-function playMovie(title){
-    return "playing: " + title + " movie";
+function playMovie(){
+    console.log("play movie");
 }
 
-function pauseMovie(title){
-   return title + " is paused";    
+function pauseMovie(){
+   console.log("you movie is paused");    
 }
 
-function resumedMovie(title){
-    return "you can resume " + title + " movie";
+function resumedMovie(){
+    console.log("you can resume the movie");
 }
 
 
@@ -95,17 +115,34 @@ function resumedMovie(title){
 /***********************************************************functions*****************************************************************/ 
 /*********************************************************** test *****************************************************************/ 
 
-let theNotebook= new Movie("the notebook",2004,2);
-theNotebook.play();
+const theNotebook= new Movie("the notebook",2004,2);
+/*theNotebook.play();
 theNotebook.pause();
 theNotebook.off("pause",pauseMovie);
-theNotebook.pause();
+theNotebook.pause();*/
+
+const allie = new Actor("Allie",17);
+const actors = [
+    new Actor("Noah",19),
+    new Actor("Joan",35),
+    new Actor("Davis",40)
+]
+
+theNotebook.addCast(allie);
+theNotebook.addCast(actors);
+theNotebook.showCast();
+
+
+let playLogger = new Logger();
+theNotebook.on("play",playLogger.log("play"));
+
+theNotebook.play();
 /*theNotebook.resumed();
-let goneGirl= new Movie("gone girl",2014,2,29);
+const goneGirl= new Movie("gone girl",2014,2,29);
 goneGirl.play();
 goneGirl.pause();
 goneGirl.resumed();
-let zombieland= new Movie("zombieland",2009,1);
+const zombieland= new Movie("zombieland",2009,1);
 zombieland.play();
 zombieland.pause();
 zombieland.resumed();
