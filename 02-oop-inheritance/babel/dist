@@ -1,0 +1,86 @@
+class Actor {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+}
+class EventEmitter {
+  constructor() {
+    this.events = {};
+  }
+
+  on(eventName, callBack) {
+    if (!this.events[eventName]) {
+      this.events[eventName] = [];
+    }
+
+    this.events[eventName].push(callBack);
+  }
+
+  off(eventName, callBack) {
+    if (this.events[eventName]) {
+      // create a new array with all the elements that meet the condition
+      this.events[eventName] = this.events[eventName].filter(eventCallback => {
+        callBack !== eventCallback;
+      });
+    }
+  }
+
+  emit(eventName) {
+    if (this.events[eventName]) {
+      this.events[eventName].forEach(callBack => callBack());
+    }
+  }
+  /** 
+  * //  should be able to accept others functions (logger)
+  * @param {*} eventName 
+  */
+
+
+  emit(eventName) {
+    if (this.events[eventName]) {
+      this.events[eventName].forEach(fn => fn.log(eventName));
+    }
+  }
+
+}
+class Logger {
+  constructor() {}
+
+  log(info) {
+    console.log("the " + info + " event has been emitted");
+  }
+
+}
+class Movie extends EventEmitter {
+  constructor(name, year, duration) {
+    super();
+    this.title = name;
+    this.year = year;
+    this.duration = duration;
+    this.cast = [];
+  }
+
+  play() {
+    console.log("you are watching " + this.title + " movie");
+  }
+
+  pause() {
+    console.log(this.title + " movie is paused");
+  }
+
+  resumed() {
+    console.log(+this.title + " movie can be resume");
+  }
+
+  addCast(character) {
+    //add one or more actors to the cast 
+    this.cast = this.cast.concat(character);
+  }
+
+  showCast() {
+    this.cast.forEach(item => console.log(item));
+  }
+
+}

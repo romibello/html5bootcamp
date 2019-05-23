@@ -24,27 +24,19 @@ class EventEmitter{
 
     off(eventName,callBack){
         if(this.events[eventName]){// create a new array with all the elements that meet the condition
-            this.events[eventName] = this.events[eventName].filter((eventCallback)=>{
-                callBack!==eventCallback;
-            });
+            this.events[eventName] = this.events[eventName].filter((eventCallback)=>{callBack!==eventCallback;});
         }
 
     }
 
     emit(eventName){
-        const Arr = this.events[eventName];
-        if(Arr){
-            Arr.forEach((callBack) => {
-                if(typeof callBack === "Object"){
-                    callBack.log(eventName);
-                }
-                else if(typeof callBack === "function"){
-                    callBack();
-                }
-            })
+        if(this.events[eventName]){
+            this.events[eventName].forEach(callBack => callBack());
         }
         
     }
+
+    
 }
 
 class Movie extends EventEmitter{
@@ -58,19 +50,16 @@ class Movie extends EventEmitter{
     }
 
     play(){
-        this.on("play",playMovie);
         this.emit("play");
         
     }
 
     pause(){
-        this.on("pause",pauseMovie);
         this.emit("pause");
                 
     }
 
     resumed(){
-        this.on("resume",resumedMovie);
         this.emit("resume");
           
     }
@@ -82,12 +71,19 @@ class Movie extends EventEmitter{
     showCast(){
         this.cast.forEach((item)=>console.log(item));
     }
+
+    /** 
+    * //  should be able to accept others functions (logger)
+    * @param {*} eventName 
+    */
+    emit(eventName){
+        if(this.events[eventName]) {
+            this.events[eventName].forEach(fn => fn.log(eventName));
+        }
+    };
 }
 
 class Logger{
-    constructor(){
-
-    }
 
     log(info){
         console.log("the " + info + " event has been emitted");
@@ -115,7 +111,10 @@ function resumedMovie(){
 /***********************************************************functions*****************************************************************/ 
 /*********************************************************** test *****************************************************************/ 
 
+
 const theNotebook= new Movie("the notebook",2004,2);
+
+theNotebook.on("pause",pauseMovie);
 /*theNotebook.play();
 theNotebook.pause();
 theNotebook.off("pause",pauseMovie);
@@ -134,8 +133,9 @@ theNotebook.showCast();
 
 
 let playLogger = new Logger();
-theNotebook.on("play",playLogger.log("play"));
+theNotebook.on("play",playLogger);
 
+theNotebook.play();
 theNotebook.play();
 /*theNotebook.resumed();
 const goneGirl= new Movie("gone girl",2014,2,29);
