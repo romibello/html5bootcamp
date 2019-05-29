@@ -68,9 +68,6 @@ function handleFileSelect(evt) {
   evt.preventDefault();
 
   var files = evt.dataTransfer.files; // FileList object.
-
-  // files is a FileList of File objects. List some properties.
-  var output = [];
   var reader = new FileReader();
   let read = files[0];
   text.value = '';
