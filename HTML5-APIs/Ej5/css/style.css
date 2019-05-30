@@ -1,0 +1,13 @@
+body {
+    margin:0px;
+    background-color: rgb(41, 39, 39);
+}
+
+canvas {
+    display: inline;
+    margin: auto;
+}
+
+#mycanvas{
+    background-color: beige;
+}
