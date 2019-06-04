@@ -1,33 +1,25 @@
 import React, {Component} from 'react';
-
+import Movie from './Movie';
 
 class FormMovie extends Component{
     constructor(){
         super();
         this.state = {
-            title: '',
-            duration: '',
-            year: '',
-            description: ''
+            Movie
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        this.props.onAddTodo(this.state);
-        this.setState({
-            title: '',
-            duration: '',
-            year: '',
-            description: ''
-        });
+    handleSubmit(e) {/**send data */
+        if((this.state.title) && (this.state.duration) && (this.state.year) && (this.state.description)){
+            e.preventDefault();
+            this.props.onAddTodo(this.state);
+        }
     }
 
     handleInputChange(e) {
        const {value, name} = e.target;
-       console.log(value, name);
        this.setState({
          [name]: value
        });
@@ -36,8 +28,8 @@ class FormMovie extends Component{
     render() {
         return(
             <div className="card">
-                <form className="card-body" onSubmit={this.habndleSubmit}>
-                    <label> Add a new Movie </label>
+                <form className="card-body">
+                    <label> {this.props.title} </label>
                     <div className="form-group">
                         <input type="text" name="title" className="form-control" placeholder="Title" required onChange={this.handleInputChange}></input>
                     </div>
