@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
-import Movie from './Movie';
 
 class FormMovie extends Component{
     constructor(){
         super();
         this.state = {
-            Movie
-        };
+            title: '',
+            duration: '',
+            year: '',
+            description: '',
+            favorite: ''
+        }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -17,6 +20,7 @@ class FormMovie extends Component{
             this.props.onAddTodo(this.state);
         }
     }
+
 
     handleInputChange(e) {
        const {value, name} = e.target;
@@ -41,6 +45,12 @@ class FormMovie extends Component{
                     </div>
                     <div className="form-group">
                         <input type="text" name="description" className="form-control" placeholder="Description" required onChange={this.handleInputChange}></input>
+                    </div>
+                    <div className="form-group"> 
+                        <select name="favorite" onChange={this.handleInputChange}>
+                            <option value="true">favorite</option>
+                            <option value="false">not favorite </option>
+                        </select>
                     </div>
                     <button className="btn btn-info" onClick={this.handleSubmit}> Save </button>
                 </form>
