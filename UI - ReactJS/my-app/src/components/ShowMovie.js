@@ -14,6 +14,10 @@ class ShowMovie extends Component{
                     <p> {this.props.Movie.year} </p>
                     <p> {this.props.Movie.description} </p>
                 </div>
+                <div className="card-footer">
+                <button className="btn btn-danger" onClick={this.props.remove}> Delete </button>
+                <button className="btn btn-info" onClick={this.props.edit}> Edit </button>
+              </div>
             </div>
         )
     }

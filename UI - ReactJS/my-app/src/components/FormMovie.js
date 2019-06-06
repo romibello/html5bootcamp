@@ -8,7 +8,7 @@ class FormMovie extends Component{
             duration: '',
             year: '',
             description: '',
-            favorite: ''
+            favorite: false
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,16 +17,17 @@ class FormMovie extends Component{
     handleSubmit(e) {/**send data */
         if((this.state.title) && (this.state.duration) && (this.state.year) && (this.state.description)){
             e.preventDefault();
+            console.log("estado antes d enviar");
+            console.log(this.state.favorite);
             this.props.onAddTodo(this.state);
         }
     }
 
 
     handleInputChange(e) {
-       const {value, name} = e.target;
-       this.setState({
-         [name]: value
-       });
+        const {name, value, type, checked} = e.target
+        console.log(checked);
+        type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value })
     }
     
     render() {
@@ -47,10 +48,7 @@ class FormMovie extends Component{
                         <input type="text" name="description" className="form-control" placeholder="Description" required onChange={this.handleInputChange}></input>
                     </div>
                     <div className="form-group"> 
-                        <select name="favorite" onChange={this.handleInputChange}>
-                            <option value="true">favorite</option>
-                            <option value="false">not favorite </option>
-                        </select>
+                        <input type="checkbox" checked={this.state.favorite} name="favorite" onChange={this.handleInputChange}/> favorite
                     </div>
                     <button className="btn btn-info" onClick={this.handleSubmit}> Save </button>
                 </form>
