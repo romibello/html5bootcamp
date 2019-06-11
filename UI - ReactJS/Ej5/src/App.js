@@ -3,6 +3,10 @@ import FormMovie from './components/FormMovie';
 import ShowMovie from './components/ShowMovie';
 import { connect } from "react-redux";
 import { ADD_MOVIE } from './constants/action-types';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import Home from './components/ShowMovie'
+import AddMovie from './components/FormMovie';
 
 class App extends Component {
   constructor(props) {
@@ -16,7 +20,14 @@ class App extends Component {
 
   render(){
     return(
-      <div className="container">
+      <BrowserRouter>
+          <Navigation />
+          <Route exact path='/' component={Home} />
+          <Route
+            path='/addmovie'
+            render={(props) => <AddMovie handleSubmit= {this.handleFormSubmit} />} />
+      </BrowserRouter>
+      /*<div className="container">
         <div className="row">
           <div className="col">
             <FormMovie title="add a Movie" handleSubmit= {this.handleFormSubmit}/>
@@ -26,7 +37,7 @@ class App extends Component {
           </div>
         </div>
         
-      </div>
+      </div>*/
 
     );
   }
